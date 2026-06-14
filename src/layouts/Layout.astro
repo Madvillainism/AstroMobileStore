@@ -3,6 +3,7 @@ interface Props {
   title: string;
 }
 const { title } = Astro.props;
+import { Icon } from "astro-icon/components";
 ---
 
 <!doctype html>
@@ -25,8 +26,8 @@ const { title } = Astro.props;
         <a href="#" class="logo"
           >AMATERASU <span class="logo-accent">STORE</span></a
         >
-        <button class="cart-toggle" aria-label="Ver Carrito">
-          🛒 <span class="cart-count">0</span>
+        <button id="menu-button" class="cart-toggle" aria-label="Menu">
+          <Icon name="mdi:menu" />
         </button>
       </div>
     </header>
@@ -112,7 +113,7 @@ const { title } = Astro.props;
     background: none;
     border: none;
     color: var(--text-main);
-    font-size: 1.25rem;
+    font-size: 2rem;
     cursor: pointer;
     position: relative;
   }
@@ -138,3 +139,12 @@ const { title } = Astro.props;
     margin-top: 3rem;
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.getElementById("menu-button");
+    menuButton!.addEventListener("click", () => {
+      alert("Funcionalidad del menú aún no implementada.");
+    });
+  });
+</script>
