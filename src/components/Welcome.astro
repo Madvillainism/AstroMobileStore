@@ -2,6 +2,7 @@
 const products: any[] = [];
 import heroimg from "../assets/hero-1.png";
 import { Icon } from "astro-icon/components";
+import brandimg from "../assets/logo-mura.png";
 ---
 
 <section class="hero">
@@ -30,7 +31,64 @@ import { Icon } from "astro-icon/components";
       <h1>CAMISITA</h1>
       <p>$99</p>
     </div>
+
+    <div class="frame-2">
+      <img src={heroimg.src} class="product-img" alt="Imagen del producto" />
+      <h1>CAMISITA</h1>
+      <p>$99</p>
+    </div>
+
+    <div class="frame">
+      <img src={heroimg.src} class="product-img" alt="Imagen del producto" />
+      <h1>JEAN</h1>
+      <p>$99</p>
+    </div>
+
+    <div class="frame-2">
+      <img src={heroimg.src} class="product-img" alt="Imagen del producto" />
+      <h1>TATUAJE</h1>
+      <p>$99</p>
+    </div>
+
+    <div class="frame">
+      <img src={heroimg.src} class="product-img" alt="Imagen del producto" />
+      <h1>CAMISITA</h1>
+      <p>$99</p>
+    </div>
   </div>
+
+  <section class="cta-section">
+    <div>
+      <a
+        href="https://www.linkedin.com/in/carlos-perez-frontend-dev/"
+        target="_blank"
+        rel="noopener noreferrer">Shop Now</a
+      >
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos nisi
+        quibusdam placeat inventore laudantium quos suscipit, id voluptatem.
+      </p>
+    </div>
+
+    <h1>Hecho con FUEGO <Icon name="mdi:fire" /></h1>
+  </section>
+  <div class="brands-container">
+    <img src={brandimg.src} alt="Logo de la marca" />
+    <img src={brandimg.src} alt="Logo de la marca" />
+    <img src={brandimg.src} alt="Logo de la marca" />
+    <img src={brandimg.src} alt="Logo de la marca" />
+  </div>
+</section>
+
+<section class="discounts-container">
+  <h1>Oferta Celestial</h1>
+
+  <div class="offer-card">
+    <img src={heroimg.src} class="product-img" alt="Imagen del producto" />
+    <italic>Pocas unidades disponibles</italic>
+  </div>
+
+  <button>Comprar</button>
 </section>
 
 <style>
@@ -47,6 +105,22 @@ import { Icon } from "astro-icon/components";
       var(--accent-gold)
     );
     border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 300px;
+    width: 300px;
+  }
+
+  .frame-2 {
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 100%);
+    background-image: linear-gradient(
+      0deg,
+      var(--accent-crimson),
+      var(--text-main)
+    );
+    border-radius: 10%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -103,9 +177,120 @@ import { Icon } from "astro-icon/components";
   /* Core Responsive Grid Layout Framework */
   .product-grid {
     display: grid;
-    grid-template-columns: 1fr; /* 1 structural column on mobile devices */
+    grid-template-columns: 1fr;
+    justify-items: center;
     gap: 1.5rem;
   }
+
+  .cta-section {
+    margin: 2rem 0;
+    padding: 2rem 1rem;
+    background-color: var(--text-muted);
+    border-radius: 12px;
+    color: var(--surface-card);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    a {
+      color: var(--surface-card);
+      text-decoration: underline;
+    }
+  }
+
+  .brands-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 1rem;
+
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      border-right: 2px solid var(--text-main);
+    }
+
+    img:last-child {
+      border-right: none;
+    }
+  }
+
+  .discounts-container {
+    padding: 1rem 0.5rem;
+    text-align: center;
+    background-color: var(--surface-card);
+    border-radius: 12px;
+    color: var(--text-main);
+    margin: 2rem 0;
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .offer-card {
+      background-color: var(--accent-crimson);
+      padding: 1rem;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      animation: cardPulse 2s ease-in-out infinite;
+    }
+
+    button {
+      background-color: var(--accent-gold);
+      color: var(--surface-card);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }
+
+  @keyframes cardPulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.025);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes holoSweep {
+    0% {
+      opacity: 0;
+      transform: rotate(-45deg) translateY(-50%);
+    }
+    10%,
+    40% {
+      opacity: 1; /* Turn on visibility as it sweeps */
+    }
+    50% {
+      opacity: 0;
+      transform: rotate(-45deg) translateY(100%); /* Reaches the end */
+    }
+    100% {
+      opacity: 0;
+      transform: rotate(-45deg) translateY(100%); /* Holds hidden for the rest of the loop */
+    }
+  }
+
+  /* .brands-container {
+    padding: 2rem 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  } */
 
   /* --- TABLET SCREEN BREAKPOINT SCALE UP --- */
   @media (min-width: 640px) {
